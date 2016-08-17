@@ -10,22 +10,16 @@
   apt:
     name: iotop
     state: present
-    update_cache: yes
-    cache_valid_time: 30
 
 - name: Install python-pycurl and python-apt for Debian OS family
   apt:
     name: "{{ item.package }}"
-    update_cache: yes
-    cache_valid_time: 30
     state: present
   with_items: "{{ python_utils }}"
 
 - name: Install Linux Headers for Debian OS family (for Sysdig)
   apt:
     name: linux-headers-{{ ansible_kernel }}
-    update_cache: yes
-    cache_valid_time: 30
     state: latest
 
 - name: Get Sysdig key
