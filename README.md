@@ -1,6 +1,6 @@
-Entia non sunt multiplicanda praeter necessitatem
+*Entia non sunt multiplicanda praeter necessitatem*
 
-stattools - This is the role which installs my favorite performance tools:
+**stattools** - This is the role which installs my favorite performance tools:
 
 1. atop
 2. iotop
@@ -23,10 +23,11 @@ None
 
 Example Playbook
 ----------------
-- hosts: servers
+```
+- hosts: my_servers
   roles:
     - stattools
-
+```
 
 License
 -------
