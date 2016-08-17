@@ -1,0 +1,48 @@
+---
+- name: Installation of atop
+  apt:
+    name: atop
+    state: present
+    update_cache: yes
+    cache_valid_time: 30
+
+- name: Installation of iotop
+  apt:
+    name: iotop
+    state: present
+    update_cache: yes
+    cache_valid_time: 30
+
+- name: Install python-pycurl and python-apt for Debian OS family
+  apt:
+    name: "{{ item.package }}"
+    update_cache: yes
+    cache_valid_time: 30
+    state: present
+  with_items: "{{ python_utils }}"
+
+- name: Install Linux Headers for Debian OS family (for Sysdig)
+  apt:
+    name: linux-headers-{{ ansible_kernel }}
+    update_cache: yes
+    cache_valid_time: 30
+    state: latest
+
+- name: Get Sysdig key
+  apt_key:
+    url: "{{ sysdig_repo_key }}"
+
+- name: Download and install Sysdig repo file
+  get_url:
+    url: "{{ sysdig_apt_repo}}"
+    dest: "{{ sysdig_apt_config }}"
+    owner: root
+    group: root
+    mode: 644
+
+- name: Install Sysdig package
+  apt:
+    name: "{{ sysdig_package_name }}"
+    update_cache: yes
+    cache_valid_time: 30
+    state: latest
