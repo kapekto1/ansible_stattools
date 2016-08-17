@@ -1,6 +1,6 @@
 Entia non sunt multiplicanda praeter necessitatem
 
-stattols - This is the role which installs my favorite performance tools:
+stattools - This is the role which installs my favorite performance tools:
 
 1. atop
 2. iotop
